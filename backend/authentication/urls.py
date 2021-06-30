@@ -1,10 +1,15 @@
 """ Authentication urls. """
 
-from django.urls import path, include
-from .views import LoginView, LogoutView, SignupView
+# Django
+from django.urls import path
+
+# REST Framework
+from rest_framework.authtoken.views import obtain_auth_token
+
+# Views
+from .views import SignupView
 
 urlpatterns = [
-    path('auth/login/', LoginView.as_view(), name='auth_login'),
-    path('auth/logout/', LogoutView.as_view(), name='auth_logout'),
     path('auth/signup/', SignupView.as_view(), name='auth_signup'),
+    path('auth/token-auth/', obtain_auth_token, name='api_token_auth'),
 ]
