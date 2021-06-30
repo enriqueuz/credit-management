@@ -13,5 +13,5 @@ class CreditApplicationModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         """ Meta class"""
-        model = Credit
+        model = CreditApplication
         fields = ['ai_indicator']
