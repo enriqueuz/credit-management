@@ -25,7 +25,6 @@ class UserSerializer(serializers.ModelSerializer):
         )
 
         return user
-    
 
     def validate_username(self, value):
         """ Check user doest not exists"""

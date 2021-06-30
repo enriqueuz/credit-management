@@ -13,5 +13,5 @@ urlpatterns = [
 
     # Api routes
     path('api/', include('authentication.urls')),
-    path('api/', include(router.urls)),
+    path('api/', include('credits.urls')),
 ]

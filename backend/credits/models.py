@@ -2,8 +2,6 @@
 
 # Django
 from django.db import models
-from django.db.models.enums import Choices
-from django.db.models.fields import EmailField
 
 # Models
 from utils.models import BaseModel
@@ -21,8 +19,11 @@ class Credit(BaseModel):
         blank=True, 
         null=True,
         related_name='credits')
-    
 
+    @property
+    def application_ai_ind(self):
+        """ return CreditApplication ai indicator """
+        return self.creditapplication.ai_indicator
 
 class Client(BaseModel):
     """ Client base model. """
@@ -55,7 +56,6 @@ class Client(BaseModel):
     )
 
 
-
 class CreditApplication(BaseModel):
     """ Credit Application model """
 
@@ -63,7 +63,7 @@ class CreditApplication(BaseModel):
 
     ai_indicator = models.IntegerField(choices=AI_INDICATOR_CHOICES)
 
-    is_approved = models.BooleanField(default=False)
+    is_approved = models.BooleanField(null=True, blank=True)
 
     credit = models.OneToOneField(
         'Credit',
